@@ -7,7 +7,7 @@ const app = express();
 const router = express.Router();
 const createMongooseSchema = require("json-schema-to-mongoose");
 
-const jsonSchema = require("../schema/Person.json");
+const { refs, schema } = require("../schema/Person.schema.js");
 
 app.use(bodyParser.json());
 app.use(methodOverride());
@@ -15,7 +15,19 @@ app.use(methodOverride());
 mongoose.connect("mongodb://localhost:27017/database");
 
 const version = "/v1";
-restify.serve(router, mongoose.model("Person", new mongoose.Schema(createMongooseSchema({}, jsonSchema))), { version });
+restify.serve(
+    router,
+    mongoose.model(
+        "Person",
+        new mongoose.Schema(
+            createMongooseSchema(
+                refs,
+                schema
+            )
+        )
+    ),
+    { version }
+);
 
 app.use(router);
 
