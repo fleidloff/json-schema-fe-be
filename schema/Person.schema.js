@@ -5,10 +5,12 @@ const schema = {
   "type": "object",
   "properties": {
     "firstName": {
-      "type": "string"
+      "type": "string",
+      "description": "First Name",
     },
     "lastName": {
-      "type": "string"
+      "type": "string",
+      "description": "Last Name"
     },
     "age": {
       "description": "Age in years",

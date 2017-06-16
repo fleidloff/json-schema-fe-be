@@ -11,6 +11,18 @@ exports.devServer = ({ host, port } = {}) => ({
     overlay: {
       errors: true,
       warnings: true
+    },
+    proxy: {
+      "/api": {
+        "target": {
+          "host": "localhost",
+          "protocol": 'http:',
+          "port": 3000
+        },
+        ignorePath: false,
+        changeOrigin: true,
+        secure: false
+      }
     }
   }
 });
@@ -26,6 +38,33 @@ exports.lintJavaScript = ({ include, exclude, options }) => ({
 
         loader: "eslint-loader",
         options
+      }
+    ]
+  }
+});
+
+exports.loadFonts = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        include,
+        exclude,
+        use: ["file-loader"]
+      }
+    ]
+  }
+});
+
+exports.loadLESS = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        include,
+        exclude,
+
+        use: ["style-loader", "css-loader", "less-loader"]
       }
     ]
   }
