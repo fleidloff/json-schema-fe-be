@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 const restify = require("express-restify-mongoose");
 const app = express();
 const router = express.Router();
+const createMongooseSchema = require("json-schema-to-mongoose");
+
+const jsonSchema = require("../schema/Person.json");
 
 app.use(bodyParser.json());
 app.use(methodOverride());
@@ -12,13 +15,11 @@ app.use(methodOverride());
 mongoose.connect("mongodb://localhost:27017/database");
 
 const version = "/v1";
-restify.serve(router, mongoose.model("Customer", new mongoose.Schema({
-  name: { type: String, required: true },
-  comment: { type: String }
-})), { version });
+restify.serve(router, mongoose.model("Person", new mongoose.Schema(createMongooseSchema({}, jsonSchema))), { version });
 
 app.use(router);
 
-app.listen(3000, () => {
-  console.log("Express server listening on port 3000");
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Express server listening on port ${port}`);
 });
