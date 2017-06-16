@@ -14,10 +14,10 @@ exports.devServer = ({ host, port } = {}) => ({
     },
     proxy: {
       "/api": {
-        "target": {
-          "host": "localhost",
-          "protocol": 'http:',
-          "port": 3000
+        target: {
+          host: "localhost",
+          protocol: "http:",
+          port: 3000
         },
         ignorePath: false,
         changeOrigin: true,
