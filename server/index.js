@@ -16,17 +16,17 @@ mongoose.connect("mongodb://localhost:27017/database");
 
 const version = "/v1";
 restify.serve(
-    router,
-    mongoose.model(
-        "Person",
-        new mongoose.Schema(
-            createMongooseSchema(
-                refs,
-                schema
-            )
-        )
-    ),
-    { version }
+  router,
+  mongoose.model(
+    "Person",
+    new mongoose.Schema(
+      createMongooseSchema(
+        refs,
+        schema
+      )
+    )
+  ),
+  { version }
 );
 
 app.use(router);

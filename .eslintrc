@@ -5,6 +5,8 @@
     "es6": true
   },
 
+  "parser": "babel-eslint",
+
   "plugins": ["react"],
 
   "parserOptions": {
@@ -31,7 +33,8 @@
       "unicodeCodePointEscapes": true,
       "globalReturn": true,
       "jsx": true
-    }
+    },
+    "sourceType": "module"
   },
 
 
@@ -107,7 +110,6 @@
     "no-octal": 2, // disallow use of octal literals
     "no-octal-escape": 2, // disallow use of octal escape sequences in string literals, such as var foo = "Copyright \251";
     "no-param-reassign": 2, // disallow reassignment of function parameters (off by default)
-    "no-process-env": 2, // disallow use of process.env (off by default)
     "no-proto": 2, // disallow usage of __proto__ property
     "no-redeclare": 2, // disallow declaring the same variable more then once
     "no-return-assign": 2, // disallow use of assignment in return statement
@@ -167,7 +169,6 @@
     "new-parens": 1, // disallow the omission of parentheses when invoking a constructor with no arguments
     "newline-after-var": 0, // allow/disallow an empty newline after var statement (off by default)
     "no-array-constructor": 1, // disallow use of the Array constructor
-    "no-inline-comments": 1, // disallow comments inline after code (off by default)
     "no-lonely-if": 1, // disallow if as the only statement in an else block (off by default)
     "no-mixed-spaces-and-tabs": 1, // disallow mixed spaces and tabs for indentation
     "no-multiple-empty-lines": [1, {"max": 2}], // disallow multiple empty lines (off by default)
