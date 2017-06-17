@@ -6,15 +6,17 @@ const restify = require("express-restify-mongoose");
 const app = express();
 const router = express.Router();
 const createMongooseSchema = require("json-schema-to-mongoose");
-
 const { refs, schema } = require("../schema/Person.schema.js");
+const {
+  port,
+  version
+} = require("./config");
 
 app.use(bodyParser.json());
 app.use(methodOverride());
 
 mongoose.connect("mongodb://localhost:27017/database");
 
-const version = "/v1";
 restify.serve(
   router,
   mongoose.model(
@@ -26,12 +28,13 @@ restify.serve(
       )
     )
   ),
-  { version }
+  { version: `/${version}` }
 );
 
 app.use(router);
 
-const port = 3000;
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
 });
+
+

@@ -2,7 +2,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BabiliPlugin = require("babili-webpack-plugin");
 const webpack = require("webpack");
 
-exports.devServer = ({ host, port } = {}) => ({
+exports.devServer = ({ host, port, api } = {}) => ({
   devServer: {
     historyApiFallback: true,
     stats: "errors-only",
@@ -13,11 +13,11 @@ exports.devServer = ({ host, port } = {}) => ({
       warnings: true
     },
     proxy: {
-      "/api": {
+      [api.path || "/"]: {
         target: {
           host: "localhost",
           protocol: "http:",
-          port: 3000
+          port: api.port || 8080
         },
         ignorePath: false,
         changeOrigin: true,

@@ -3,6 +3,7 @@ const schema = {
   "description": "A very simple form for creating a person.",
   "title": "Person",
   "type": "object",
+  "version": "v2",
   "properties": {
     "firstName": {
       "type": "string",

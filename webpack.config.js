@@ -4,6 +4,7 @@ const merge = require("webpack-merge");
 const webpack = require("webpack");
 
 const parts = require("./webpack.parts");
+const serverConfig = require("./server/config");
 
 const PATHS = {
   app: path.join(__dirname, "client"),
@@ -65,7 +66,11 @@ const developmentConfig = merge([
   parts.devServer({
     // Customize host/port here if needed
     host: process.env.HOST,
-    port: process.env.PORT
+    port: process.env.PORT,
+    api: {
+      path: serverConfig.url,
+      port: serverConfig.port
+    }
   }),
   parts.loadCSS(),
   parts.loadLESS(),
