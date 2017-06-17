@@ -10,7 +10,6 @@ import autobind from "autobind";
 export default class PersonAdd extends React.Component {
   @autobind
   createPerson(ev) {
-    this.setState({ formData: {} });
     createPerson(ev).then(({ data }) => {
       this.props.setState((prevState) => ({
         persons: [...prevState.persons, data ]
