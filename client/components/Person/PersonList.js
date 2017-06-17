@@ -1,5 +1,6 @@
 import React from "react";
 import { getPersons, deletePerson } from "./backend";
+import Person from "./Person";
 
 export default class extends React.Component {
   state = { persons: [] };
@@ -25,10 +26,3 @@ export default class extends React.Component {
     </div>;
   }
 }
-
-const Person = ({ firstName, lastName, age, _id, onDelete }) => (
-  <div className="Person">
-    {firstName} {lastName} { age && ` (${age})`}
-    <button onClick={() => onDelete(_id)}>delete</button>
-  </div>
-);

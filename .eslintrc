@@ -147,7 +147,6 @@
     "no-undef-init": 2, // disallow use of undefined when initializing variables
     "no-undefined": 2, // disallow use of undefined variable (off by default)
     "no-unused-vars": 2, // disallow declaration of variables that are not used in the code
-    "no-use-before-define": 2, // disallow use of variables before they are defined
 
     //
     //Stylistic Issues
@@ -230,5 +229,6 @@
     "react/no-unknown-property": 2, // Prevent usage of unknown DOM property
     "react/react-in-jsx-scope": 2, // Prevent missing React when using JSX
     "react/self-closing-comp": 2, // Prevent extra closing tags for components without children
+    "react/prop-types": 2
   }
 }
