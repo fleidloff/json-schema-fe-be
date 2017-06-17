@@ -1,37 +1,45 @@
 import "./style.less";
 
 import React from "react";
+import PropTypes from "prop-types";
 import Form from "react-jsonschema-form";
 import { schema, uiSchema } from "../../../schema/Person.schema.js";
 import { createPerson } from "./backend";
+import autobind from "autobind";
 
-export default class extends React.Component {
-  state = { formData: {} };
-
-  createPerson = (ev) => {
+export default class PersonAdd extends React.Component {
+  @autobind
+  createPerson(ev) {
     this.setState({ formData: {} });
-    createPerson(ev);
-  };
-
-  updatePerson = ({ formData }) => {
-    this.setState({ formData });
-  };
+    createPerson(ev).then(({ data }) => {
+      this.props.setState((prevState) => ({
+        persons: [...prevState.persons, data ]
+      }));
+    });
+  }
 
   render() {
     return (
-
-      <div>
-        <div className="Person-add">
-          <Form
-            formData={this.state.formData}
-            schema={schema}
-            uiSchema={uiSchema}
-            onChange={this.updatePerson}
-            onSubmit={this.createPerson}
-            onError={(ev) => console.log("errors", ev)}
-          />
-        </div>
+      <div className="Person-add">
+        <Form
+          {...{ schema, uiSchema }}
+          onSubmit={withRemoveErrors(this.createPerson)}
+        />
       </div>
     );
   }
 }
+
+PersonAdd.propTypes = {
+  state: PropTypes.object.isRequired,
+  setState: PropTypes.func.isRequired
+};
+
+function withRemoveErrors(func) {
+  return (ev) => {
+    ev.errors = [];
+    ev.errorSchema = {};
+    return func(ev);
+  };
+}
+

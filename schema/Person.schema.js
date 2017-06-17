@@ -10,7 +10,8 @@ const schema = {
     },
     "lastName": {
       "type": "string",
-      "title": "Last Name"
+      "title": "Last Name",
+      "minLength": 3
     },
     "age": {
       "title": "Age",

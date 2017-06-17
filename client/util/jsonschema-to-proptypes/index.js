@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
 export default function toPropTypes(schema) {
-  console.log(schema);
   if (schema.type !== "object" && typeof schema.properties !== "object") {
     return {};
   }
