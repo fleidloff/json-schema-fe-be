@@ -14,6 +14,11 @@ const schema = {
       "title": "Last Name",
       "minLength": 3
     },
+    "lastName2": {
+      "type": "string",
+      "title": "Last Name2",
+      "minLength": 3
+    },
     "age": {
       "title": "Age",
       "description": "in years",
