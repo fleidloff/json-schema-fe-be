@@ -19,6 +19,27 @@ const schema = {
       "description": "in years",
       "type": "integer",
       "minimum": 0
+    },
+    "married": {
+      "type": "boolean",
+      "title": "Married"
+    },
+    "children": {
+      "type": "array",
+      "title": "Title",
+      "items": {
+        "type": "string"
+      }
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "street_name": { "type": "string" },
+        "number":      { "type": "number" },
+        "street_type": { "type": "string",
+          "enum": ["Street", "Avenue", "Boulevard"]
+        }
+      }
     }
   },
   "required": ["firstName", "lastName"]
