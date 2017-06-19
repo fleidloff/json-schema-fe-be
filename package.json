@@ -60,6 +60,7 @@
     "json-schema-to-mongoose": "^0.2.2",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
+    "lodash": "^4.17.4",
     "method-override": "^2.3.9",
     "mongoose": "^4.10.6",
     "react": "^15.6.1",
